@@ -17,17 +17,40 @@
 
 # test()
 
-def add(func):
-    def execute(*a):
-        sum = 0
-        for i in a:
-            sum += i
-        print(f"addition is {sum}")
-        func(*a)
+# def add(func):
+#     def execute(*a):
+#         sum = 0
+#         for i in a:
+#             sum += i
+#         print(f"addition is {sum}")
+#         func(*a)
+#     return execute
+
+# @add
+# def calc(a, b):
+#     pass
+
+# calc(10, 20)
+
+def numbers_only(func):
+    def execute(a):
+        if str(a).isdigit():
+            func(a)
+        else:
+            print("Invalid Input")
     return execute
 
-@add
-def calc(a, b):
-    pass
+def chars_only(func):
+    def execute(a):
+        if str(a).isalpha():
+            func(a)
+        else:
+            print("Invalid Input")
+    return execute
 
-calc(10, 20)
+# @numbers_only
+@chars_only
+def get(a):
+    print(a)
+
+get("ddasd")
